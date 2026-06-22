@@ -111,8 +111,8 @@ export default function Recorder() {
             }
         };
 
-        // send chunk every 1 second
-        recorder.start(5000);
+        // send chunk every 0.5s second
+        recorder.start(500);
 
         setRecording(true);
 
@@ -122,7 +122,7 @@ export default function Recorder() {
                 setLoading(false);
                 stopRecording();
             }
-        }, 10000);
+        }, 15000);
     };
 
     // -----------------------------
