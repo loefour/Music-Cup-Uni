@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Recorder() {
     const [recording, setRecording] = useState(false);
@@ -9,6 +9,15 @@ export default function Recorder() {
     const mediaRecorderRef = useRef(null);
     const wsRef = useRef(null);
     const streamRef = useRef(null);
+
+    // Mobile Respincive
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 900);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     // -----------------------------
     // START RECORDING (WS VERSION)
@@ -168,7 +177,7 @@ export default function Recorder() {
       >
         <div
             style={{
-                padding: 40,
+                padding: isMobile ? 20 : 40,
                 width: "100%",
                 maxWidth: "1400px",
             }}
@@ -185,8 +194,8 @@ export default function Recorder() {
                 <button
                     onClick={handleClick}
                     style={{
-                        width: 170,
-                        height: 170,
+                        width: isMobile ? 130 : 170,
+                        height: isMobile ? 130 : 170,
                         borderRadius: "50%",
                         border: "none",
                         cursor: "pointer",
@@ -215,7 +224,7 @@ export default function Recorder() {
                     {!recording ? (
                         <div
                             style={{
-                                fontSize: 60,
+                                fontSize: isMobile ? 40 : 60,
                             }}
                         >
                             🎤
@@ -270,7 +279,7 @@ export default function Recorder() {
                     <div
                         style={{
                             display: "grid",
-                            gridTemplateColumns: "1.5fr 1.5fr",
+                            gridTemplateColumns: isMobile ? "1fr" : "1.5fr 1.5fr",
                             gap: 20,
                         }}
                     >
@@ -278,7 +287,7 @@ export default function Recorder() {
                         <div
                             style={{
                                 position: "relative",
-                                minHeight: 470,
+                                minHeight: isMobile ? 320 : 470,
                                 borderRadius: 30,
                                 overflow: "hidden",
                                 backgroundImage: `url(${song.artist_image})`,
@@ -363,7 +372,7 @@ export default function Recorder() {
                             <div
                                 style={{
                                     position: "relative",
-                                    height: 470,
+                                    height: isMobile ? 320 : 470,
                                     borderRadius: 30,
                                     overflow: "hidden",
                                     background: "#18181b",
@@ -468,7 +477,7 @@ export default function Recorder() {
                                     background: "#18181b",
                                     borderRadius: 30,
                                     padding: 24,
-                                    height: 220,
+                                    maxHeight: isMobile ? 180 : 220,
                                     overflowY: "auto",
                                 }}
                             >
