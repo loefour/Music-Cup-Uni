@@ -175,75 +175,77 @@ export default function Recorder() {
         >
           <h1>🎵 Music Cup</h1>
 
-            <div
-                style={{
-                    marginTop: 30,
-                    display: "flex",
-                    justifyContent: "center",
-                }}
-            >
-                <button
-                    onClick={handleClick}
-                    style={{
-                        width: 170,
-                        height: 170,
-                        borderRadius: "50%",
-                        border: "none",
-                        cursor: "pointer",
-                        position: "relative",
-                        overflow: "hidden",
-                        transform: recording
-                            ? "scale(1.08)"
-                            : clicked
-                                ? "scale(0.92)"
-                                : "scale(1)",
-                        background: recording
-                            ? "linear-gradient(135deg,#ef4444,#dc2626)"
-                            : "linear-gradient(135deg,#2563eb,#06b6d4)",
-
-                        animation: recording
-                            ? "recordingPulse 1.2s infinite"
-                            : "pulse 2s infinite",
-
-                        boxShadow: recording
-                            ? "0 0 25px rgba(239,68,68,.8), 0 0 80px rgba(239,68,68,.4), inset 0 0 20px rgba(255,255,255,.1)"
-                            : "0 0 25px rgba(37,99,235,.7), 0 0 80px rgba(6,182,212,.4), inset 0 0 20px rgba(255,255,255,.1)",
-
-                        transition: "all .3s ease",
-                    }}
-                >
-                    {!recording ? (
-                        <div
-                            style={{
-                                fontSize: 60,
-                            }}
-                        >
-                            🎤
-                        </div>
-                    ) : (
-                        <div
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "flex-end",
-                                gap: 6,
-                                height: 40,
-                            }}
-                        >
-                            {[0, 1, 2, 3, 4].map((i) => (
-                                <div
-                                    key={i}
-                                    style={{
-                                        width: 8,
-                                        background: "white",
-                                        borderRadius: 999,
-                                        animation: `bars ${0.6 + i * 0.15}s infinite`,
-                                    }}
-                                />
-                            ))}
-                        </div>
+            <div style={{ marginTop: 30, display: "flex", justifyContent: "center" }}>
+                <div className="wave-container">
+                    {recording && (
+                        <>
+                            <span className="wave"></span>
+                            <span className="wave delay"></span>
+                        </>
                     )}
-                </button>
+                    <button
+                        onClick={handleClick}
+                        style={{
+                            width: 170,
+                            height: 170,
+                            borderRadius: "50%",
+                            border: "none",
+                            cursor: "pointer",
+                            position: "relative",
+                            overflow: "hidden",
+                            transform: recording
+                                ? "scale(1.08)"
+                                : clicked
+                                    ? "scale(0.92)"
+                                    : "scale(1)",
+                            background: recording
+                                ? "linear-gradient(135deg,#ef4444,#dc2626)"
+                                : "linear-gradient(135deg,#2563eb,#06b6d4)",
+
+                            animation: recording
+                                ? "recordingPulse 1.2s infinite"
+                                : "pulse 2s infinite",
+
+                            boxShadow: recording
+                                ? "0 0 25px rgba(239,68,68,.8), 0 0 80px rgba(239,68,68,.4), inset 0 0 20px rgba(255,255,255,.1)"
+                                : "0 0 25px rgba(37,99,235,.7), 0 0 80px rgba(6,182,212,.4), inset 0 0 20px rgba(255,255,255,.1)",
+
+                            transition: "all .3s ease",
+                        }}
+                    >
+                        {!recording ? (
+                            <div
+                                style={{
+                                    fontSize: 60,
+                                }}
+                            >
+                                🎤
+                            </div>
+                        ) : (
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "flex-end",
+                                    gap: 6,
+                                    height: 40,
+                                }}
+                            >
+                                {[0, 1, 2, 3, 4].map((i) => (
+                                    <div
+                                        key={i}
+                                        style={{
+                                            width: 8,
+                                            background: "white",
+                                            borderRadius: 999,
+                                            animation: `bars ${0.6 + i * 0.15}s infinite`,
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </button>
+                </div>
             </div>
           <div style={{ marginTop: 20 }}>
             {recording && (
