@@ -285,10 +285,12 @@ export default function Recorder() {
                                 ? `
                                     "song"
                                     "artist"
+                                    "lyrics"
                                   `
                                 : `
                                     "artist song"
-                                `,
+                                    "artist lyrics"
+                                  `,
 
                             gap: 20,
                         }}
@@ -482,36 +484,36 @@ export default function Recorder() {
                                     )}
                                 </div>
                             </div>
-
-                            {/* LYRICS */}
-                            <div
+                        </div>
+                        {/* LYRICS */}
+                        <div
+                            style={{
+                                gridArea: "lyrics",
+                                background: "#18181b",
+                                borderRadius: 30,
+                                padding: 24,
+                                maxHeight: isMobile ? 180 : 220,
+                                overflowY: "auto",
+                            }}
+                        >
+                            <h2
                                 style={{
-                                    background: "#18181b",
-                                    borderRadius: 30,
-                                    padding: 24,
-                                    maxHeight: isMobile ? 180 : 220,
-                                    overflowY: "auto",
+                                    marginTop: 0,
+                                    marginBottom: 16,
+                                    fontSize: 24,
                                 }}
                             >
-                                <h2
-                                    style={{
-                                        marginTop: 0,
-                                        marginBottom: 16,
-                                        fontSize: 24,
-                                    }}
-                                >
-                                    Lyrics
-                                </h2>
+                                Lyrics
+                            </h2>
 
-                                <div
-                                    style={{
-                                        whiteSpace: "pre-wrap",
-                                        lineHeight: 1.8,
-                                        color: "#d1d5db",
-                                    }}
-                                >
-                                    {song.lyrics || "Lyrics not available"}
-                                </div>
+                            <div
+                                style={{
+                                    whiteSpace: "pre-wrap",
+                                    lineHeight: 1.8,
+                                    color: "#d1d5db",
+                                }}
+                            >
+                                {song.lyrics || "Lyrics not available"}
                             </div>
                         </div>
                     </div>
