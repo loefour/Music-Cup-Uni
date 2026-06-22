@@ -46,6 +46,12 @@ export default function Recorder() {
                 setLoading(true);
             }
 
+            if (msg.type === "NOT_FOUND") {
+                setLoading(false);
+                stopRecording();
+                alert("Song not found");
+            }
+
             if (msg.type === "FOUND") {
                 setSong({
                     success: true,
@@ -109,6 +115,14 @@ export default function Recorder() {
         recorder.start(2000);
 
         setRecording(true);
+
+        // ADD TimeOut
+        setTimeout(() => {
+            if (!song && recording) {
+                setLoading(false);
+                stopRecording();
+            }
+        }, 10000);
     };
 
     // -----------------------------
@@ -170,7 +184,6 @@ export default function Recorder() {
             >
                 <button
                     onClick={handleClick}
-                    disabled={loading}
                     style={{
                         width: 170,
                         height: 170,
