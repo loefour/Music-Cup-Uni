@@ -106,7 +106,7 @@ export default function Recorder() {
         };
 
         // send chunk every 1 second
-        recorder.start(500);
+        recorder.start(2000);
 
         setRecording(true);
     };
