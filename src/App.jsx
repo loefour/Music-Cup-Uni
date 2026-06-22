@@ -173,7 +173,7 @@ export default function Recorder() {
                 maxWidth: "1400px",
             }}
         >
-          <h1>🎵 Music Finder</h1>
+          <h1>🎵 Music Cup</h1>
 
             <div
                 style={{
