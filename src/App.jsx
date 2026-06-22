@@ -32,7 +32,7 @@ export default function Recorder() {
         // -----------------------------
         // CONNECT WEBSOCKET
         // -----------------------------
-        const ws = new WebSocket("ws://127.0.0.1:8000/ws/recognize");
+        const ws = new WebSocket("wss://music-cup-backend.onrender.com/ws/recognize");
         wsRef.current = ws;
 
         ws.onopen = () => {
