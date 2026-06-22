@@ -280,12 +280,23 @@ export default function Recorder() {
                         style={{
                             display: "grid",
                             gridTemplateColumns: isMobile ? "1fr" : "1.5fr 1.5fr",
+
+                            gridTemplateAreas: isMobile
+                                ? `
+                                    "song"
+                                    "artist"
+                                  `
+                                : `
+                                    "artist song"
+                                `,
+
                             gap: 20,
                         }}
                     >
                         {/* ARTIST CARD */}
                         <div
                             style={{
+                                gridArea: "artist",
                                 position: "relative",
                                 minHeight: isMobile ? 320 : 470,
                                 borderRadius: 30,
@@ -363,6 +374,7 @@ export default function Recorder() {
                         {/* SONG SIDE */}
                         <div
                             style={{
+                                gridArea: "song",
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: 20,
