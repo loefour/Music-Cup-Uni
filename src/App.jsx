@@ -285,12 +285,17 @@ export default function Recorder() {
                         width: "100%",
                         maxWidth: "1400px",
                         marginTop: 40,
+
+                        height: isMobile
+                            ? "auto"
+                            : "calc(100vh - 140px)",
                     }}
                 >
                     <div
                         style={{
                             display: "grid",
                             gridTemplateColumns: isMobile ? "1fr" : "420px 1fr",
+                            height: "100%",
 
                             gridTemplateAreas: isMobile
                                 ? `
@@ -311,7 +316,7 @@ export default function Recorder() {
                             style={{
                                 gridArea: "artist",
                                 position: "relative",
-                                minHeight: isMobile ? 320 : 900,
+                                height: "100%",
                                 borderRadius: 30,
                                 overflow: "hidden",
 
@@ -506,7 +511,8 @@ export default function Recorder() {
                                     alignItems: "center",
                                     justifyContent: "space-between",
                                     gap: 20,
-                                    minHeight: 180,
+                                    height: 180,
+                                    flexShrink: 0,
                                 }}
                             >
                                 <div
@@ -515,6 +521,7 @@ export default function Recorder() {
                                         flexDirection: "column",
                                         gap: 20,
                                         height: "100%",
+                                        overflow: "hidden",
                                     }}
                                 >
                                     <img
@@ -607,7 +614,8 @@ export default function Recorder() {
 
                                 padding: isMobile ? 24 : 40,
 
-                                height: isMobile ? "auto" : 680,
+                                flex: 1,
+                                minHeight: 0,
 
                                 overflowY: "auto",
 
