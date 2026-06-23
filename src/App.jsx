@@ -371,16 +371,18 @@ export default function Recorder() {
                             style={{
                                 gridArea: "artist",
                                 position: "relative",
-                                height: isMobile ? 280 : "100%",
+                                height: isMobile ? 320 : "100%",
+                                minHeight: isMobile ? 320 : "unset",
+                                width: "100%",
                                 borderRadius: 30,
                                 overflow: "hidden",
 
                                 backgroundImage: `url(${song.artist_image})`,
                                 backgroundSize: "cover",
-                                backgroundPosition: "center",
+                                backgroundPosition: "center center",
+                                backgroundRepeat: "no-repeat",
 
                                 boxShadow: "0 20px 60px rgba(0,0,0,.45)",
-                                backdropFilter: "blur(10px)",
                             }}
                         >
                             <div
