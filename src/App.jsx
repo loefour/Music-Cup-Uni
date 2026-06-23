@@ -352,8 +352,7 @@ export default function Recorder() {
                         style={{
                             display: "grid",
                             gridTemplateColumns: isMobile ? "1fr" : "420px 1fr",
-                            height: "100%",
-
+                            height: isMobile ? "auto" : "100%",
                             gridTemplateAreas: isMobile
                                 ? `
                                     "song"
@@ -364,7 +363,6 @@ export default function Recorder() {
                                     "artist song"
                                     "artist lyrics"
                                   `,
-
                             gap: 20,
                         }}
                     >
@@ -373,7 +371,7 @@ export default function Recorder() {
                             style={{
                                 gridArea: "artist",
                                 position: "relative",
-                                height: "100%",
+                                height: isMobile ? 280 : "100%",
                                 borderRadius: 30,
                                 overflow: "hidden",
 
@@ -407,7 +405,7 @@ export default function Recorder() {
                                 <h2
                                     style={{
                                         margin: 0,
-                                        fontSize: 32,
+                                        fontSize: isMobile ? 22 : 32,
                                         fontWeight: 700,
                                     }}
                                 >
@@ -418,7 +416,7 @@ export default function Recorder() {
                                     <h1
                                         style={{
                                             margin: 0,
-                                            fontSize: 42,
+                                            fontSize: isMobile ? 28 : 42,
                                             fontWeight: 700,
                                         }}
                                     >
@@ -455,7 +453,7 @@ export default function Recorder() {
                                         style={{
                                             marginTop: 10,
                                             marginBottom: 20,
-                                            fontSize: 22,
+                                            fontSize: isMobile ? 16 : 22,
                                             color: "#d1d5db",
                                         }}
                                     >
@@ -477,7 +475,7 @@ export default function Recorder() {
                                             marginTop: 30,
                                             borderTop: "1px solid rgba(255,255,255,.15)",
                                             paddingTop: 25,
-                                            display: "flex",
+                                            display: isMobile ? "none" : "flex",
                                             justifyContent: "space-between",
                                         }}
                                     >
@@ -565,19 +563,20 @@ export default function Recorder() {
                                     borderRadius: 30,
                                     padding: 24,
                                     display: "flex",
-                                    alignItems: "center",
+                                    alignItems: isMobile ? "flex-start" : "center",
                                     justifyContent: "space-between",
+                                    flexDirection: isMobile ? "column" : "row",
                                     gap: 20,
-                                    height: 180,
+                                    height: isMobile ? "auto" : 180,
                                     flexShrink: 0,
                                 }}
                             >
                                 <div
                                     style={{
                                         display: "flex",
-                                        flexDirection: "row",
+                                        flexDirection: isMobile ? "column" : "row",
                                         gap: 20,
-                                        alignItems: "center",
+                                        alignItems: isMobile ? "flex-start" : "center",
                                         height: "100%",
                                         overflow: "hidden",
                                     }}
