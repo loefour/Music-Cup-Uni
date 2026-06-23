@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import "./App.css";
 
 export default function Recorder() {
     const [recording, setRecording] = useState(false);
