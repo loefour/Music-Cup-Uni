@@ -58,6 +58,7 @@ export default function Recorder() {
                 setLoading(true);
             }
 
+
             if (msg.type === "NOT_FOUND") {
                 setLoading(false);
                 stopRecording();
