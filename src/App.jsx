@@ -11,6 +11,7 @@ export default function Recorder() {
     const wsRef = useRef(null);
     const streamRef = useRef(null);
 
+
     // Mobile Respincive
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
