@@ -167,12 +167,22 @@ export default function Recorder() {
   return (
       <div
           style={{
-            minHeight: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            background: "#000000",
-            color: "white",
+              minHeight: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+
+              backgroundImage:
+                  !isMobile && song?.artist_image
+                      ? `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url(${song.artist_image})`
+                      : "none",
+
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundAttachment: "fixed",
+              backgroundColor: "#000",
+
+              color: "white",
           }}
       >
         <div
@@ -279,7 +289,7 @@ export default function Recorder() {
                     <div
                         style={{
                             display: "grid",
-                            gridTemplateColumns: isMobile ? "1fr" : "1.5fr 1.5fr",
+                            gridTemplateColumns: isMobile ? "1fr" : "420px 1fr",
 
                             gridTemplateAreas: isMobile
                                 ? `
@@ -300,12 +310,16 @@ export default function Recorder() {
                             style={{
                                 gridArea: "artist",
                                 position: "relative",
-                                minHeight: isMobile ? 320 : 470,
+                                minHeight: isMobile ? 320 : 900,
                                 borderRadius: 30,
                                 overflow: "hidden",
+
                                 backgroundImage: `url(${song.artist_image})`,
                                 backgroundSize: "cover",
                                 backgroundPosition: "center",
+
+                                boxShadow: "0 20px 60px rgba(0,0,0,.45)",
+                                backdropFilter: "blur(10px)",
                             }}
                         >
                             <div
@@ -313,7 +327,7 @@ export default function Recorder() {
                                     position: "absolute",
                                     inset: 0,
                                     background:
-                                        "linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.25))",
+                                        "linear-gradient(to top, rgba(0,0,0,.98), rgba(0,0,0,.45))",
                                 }}
                             />
 
@@ -348,6 +362,32 @@ export default function Recorder() {
                                         {song.artist}
                                     </h1>
 
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: 8,
+                                            marginTop: 10,
+                                            color: "#e5e7eb",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                width: 18,
+                                                height: 18,
+                                                borderRadius: "50%",
+                                                background: "#ef4444",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                fontSize: 12,
+                                            }}
+                                        >
+                                            ✓
+                                        </span>
+
+                                        <span>Verified Artist</span>
+                                    </div>
                                     <p
                                         style={{
                                             marginTop: 10,
@@ -369,6 +409,78 @@ export default function Recorder() {
                                         {song.artist_bio ||
                                             "Artist information is currently unavailable."}
                                     </p>
+                                    <div
+                                        style={{
+                                            marginTop: 30,
+                                            borderTop: "1px solid rgba(255,255,255,.15)",
+                                            paddingTop: 25,
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                        }}
+                                    >
+                                        <div>
+                                            <div
+                                                style={{
+                                                    color: "#ff4d4d",
+                                                    fontSize: 28,
+                                                    fontWeight: 700,
+                                                }}
+                                            >
+                                                78.2M
+                                            </div>
+
+                                            <div
+                                                style={{
+                                                    color: "#9ca3af",
+                                                    fontSize: 14,
+                                                }}
+                                            >
+                                                Monthly listeners
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div
+                                                style={{
+                                                    color: "#ff4d4d",
+                                                    fontSize: 28,
+                                                    fontWeight: 700,
+                                                }}
+                                            >
+                                                2010
+                                            </div>
+
+                                            <div
+                                                style={{
+                                                    color: "#9ca3af",
+                                                    fontSize: 14,
+                                                }}
+                                            >
+                                                Debut
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div
+                                                style={{
+                                                    color: "#ff4d4d",
+                                                    fontSize: 28,
+                                                    fontWeight: 700,
+                                                }}
+                                            >
+                                                8
+                                            </div>
+
+                                            <div
+                                                style={{
+                                                    color: "#9ca3af",
+                                                    fontSize: 14,
+                                                }}
+                                            >
+                                                Albums
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -385,122 +497,138 @@ export default function Recorder() {
                             {/* BIG SONG COVER */}
                             <div
                                 style={{
-                                    position: "relative",
-                                    height: isMobile ? 320 : 470,
+                                    background: "rgba(20,20,20,.85)",
+                                    backdropFilter: "blur(20px)",
                                     borderRadius: 30,
-                                    overflow: "hidden",
-                                    background: "#18181b",
+                                    padding: 24,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "space-between",
+                                    gap: 20,
+                                    minHeight: 180,
                                 }}
                             >
-                                {song.cover && (
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        gap: 20,
+                                        height: "100%",
+                                    }}
+                                >
                                     <img
                                         src={song.cover}
                                         alt=""
                                         style={{
-                                            width: "100%",
-                                            height: "100%",
+                                            width: isMobile ? 100 : 140,
+                                            height: isMobile ? 100 : 140,
+                                            borderRadius: 20,
                                             objectFit: "cover",
                                         }}
                                     />
-                                )}
 
-                                <div
-                                    style={{
-                                        position: "absolute",
-                                        inset: 0,
-                                        background:
-                                            "linear-gradient(to top, rgba(0,0,0,.95), rgba(0,0,0,.05))",
-                                    }}
-                                />
-
-                                <div
-                                    style={{
-                                        position: "absolute",
-                                        left: 30,
-                                        right: 30,
-                                        bottom: 30,
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            color: "#9ca3af",
-                                            fontSize: 13,
-                                            letterSpacing: 3,
-                                            marginBottom: 12,
-                                        }}
-                                    >
-                                        SONG FOUND
-                                    </div>
-
-                                    <h1
-                                        style={{
-                                            margin: 0,
-                                            fontSize: 52,
-                                            fontWeight: 800,
-                                            lineHeight: 1.1,
-                                        }}
-                                    >
-                                        {song.title}
-                                    </h1>
-
-                                    <p
-                                        style={{
-                                            marginTop: 12,
-                                            marginBottom: 8,
-                                            fontSize: 24,
-                                            color: "#d1d5db",
-                                        }}
-                                    >
-                                        {song.artist}
-                                    </p>
-
-                                    <p
-                                        style={{
-                                            color: "#9ca3af",
-                                            marginBottom: 20,
-                                            fontSize: 16,
-                                        }}
-                                    >
-                                        {song.album}
-                                    </p>
-
-                                    {song.spotify_url && (
-                                        <a
-                                            href={song.spotify_url}
-                                            target="_blank"
-                                            rel="noreferrer"
+                                    <div>
+                                        <div
                                             style={{
-                                                background: "#1DB954",
-                                                color: "white",
-                                                padding: "12px 22px",
-                                                borderRadius: 999,
-                                                textDecoration: "none",
-                                                fontWeight: 700,
-                                                display: "inline-block",
+                                                color: "#9ca3af",
+                                                fontSize: 13,
+                                                letterSpacing: 2,
+                                                marginBottom: 10,
                                             }}
                                         >
-                                            🎵 Open Spotify
-                                        </a>
-                                    )}
+                                            SONG FOUND
+                                        </div>
+
+                                        <h1
+                                            style={{
+                                                margin: 0,
+                                                fontSize: isMobile ? 28 : 42,
+                                                fontWeight: 800,
+                                            }}
+                                        >
+                                            {song.title}
+                                        </h1>
+
+                                        <p
+                                            style={{
+                                                marginTop: 8,
+                                                marginBottom: 5,
+                                                color: "#d1d5db",
+                                                fontSize: 20,
+                                            }}
+                                        >
+                                            {song.artist}
+                                        </p>
+
+                                        <p
+                                            style={{
+                                                color: "#9ca3af",
+                                                margin: 0,
+                                            }}
+                                        >
+                                            {song.album}
+                                        </p>
+                                    </div>
                                 </div>
+
+                                {/*{song.spotify_url && (*/}
+                                {/*    <a*/}
+                                {/*        href={song.spotify_url}*/}
+                                {/*        target="_blank"*/}
+                                {/*        rel="noreferrer"*/}
+                                {/*        style={{*/}
+                                {/*            background: "#1DB954",*/}
+                                {/*            color: "white",*/}
+                                {/*            padding: "14px 22px",*/}
+                                {/*            borderRadius: 15,*/}
+                                {/*            textDecoration: "none",*/}
+                                {/*            fontWeight: 700,*/}
+                                {/*            whiteSpace: "nowrap",*/}
+                                {/*        }}*/}
+                                {/*    >*/}
+                                {/*        Play on Spotify*/}
+                                {/*    </a>*/}
+                                {/*)}*/}
                             </div>
                         </div>
                         {/* LYRICS */}
                         <div
                             style={{
                                 gridArea: "lyrics",
-                                background: "#18181b",
+
+                                background: isMobile
+                                    ? "#18181b"
+                                    : "linear-gradient(135deg, rgba(140,20,20,.95), rgba(60,0,0,.95))",
+
+                                backdropFilter: "blur(20px)",
+
                                 borderRadius: 30,
-                                padding: 24,
-                                maxHeight: isMobile ? 180 : 220,
+
+                                padding: isMobile ? 24 : 40,
+
+                                height: isMobile ? "auto" : 680,
+
                                 overflowY: "auto",
+
+                                boxShadow: "0 20px 50px rgba(0,0,0,.35)",
                             }}
                         >
+                            <div
+                                style={{
+                                    color: "rgba(255,255,255,.65)",
+                                    letterSpacing: 3,
+                                    fontSize: 12,
+                                    marginBottom: 10,
+                                }}
+                            >
+                                MUSIC CUP
+                            </div>
                             <h2
                                 style={{
                                     marginTop: 0,
-                                    marginBottom: 16,
-                                    fontSize: 24,
+                                    marginBottom: 25,
+                                    fontSize: isMobile ? 24 : 34,
+                                    fontWeight: 700,
                                 }}
                             >
                                 Lyrics
@@ -509,8 +637,10 @@ export default function Recorder() {
                             <div
                                 style={{
                                     whiteSpace: "pre-wrap",
-                                    lineHeight: 1.8,
-                                    color: "#d1d5db",
+                                    lineHeight: 2,
+                                    color: "#f3f4f6",
+                                    fontSize: isMobile ? 15 : 18,
+                                    maxWidth: "95%",
                                 }}
                             >
                                 {song.lyrics || "Lyrics not available"}
