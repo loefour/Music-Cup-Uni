@@ -579,7 +579,8 @@ export default function Recorder() {
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: 20,
-                                alignItems: isMobile ? "center" : "stretch",
+                                width: "100%",
+                                alignItems: "stretch",
                             }}
                         >
                             {/* BIG SONG COVER */}
