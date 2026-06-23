@@ -593,9 +593,11 @@ export default function Recorder() {
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "space-between",
+                                    flexDirection: "row",
                                     gap: 20,
                                     height: isMobile ? "auto" : 180,
                                     flexShrink: 0,
+                                    width: "100%",
                                 }}
                             >
                                 <div
