@@ -518,8 +518,9 @@ export default function Recorder() {
                                 <div
                                     style={{
                                         display: "flex",
-                                        flexDirection: "column",
+                                        flexDirection: "row",
                                         gap: 20,
+                                        alignItems: "center",
                                         height: "100%",
                                         overflow: "hidden",
                                     }}
