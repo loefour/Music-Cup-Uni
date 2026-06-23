@@ -579,7 +579,9 @@ export default function Recorder() {
                                         display: "flex",
                                         flexDirection: isMobile ? "column" : "row",
                                         gap: 20,
-                                        alignItems: isMobile ? "flex-start" : "center",
+                                        alignItems: "center",
+                                        justifyContent: isMobile ? "center" : "space-between",
+                                        textAlign: isMobile ? "center" : "left",
                                         height: "100%",
                                         overflow: "hidden",
                                     }}
@@ -588,8 +590,8 @@ export default function Recorder() {
                                         src={song.cover}
                                         alt=""
                                         style={{
-                                            width: isMobile ? 100 : 140,
-                                            height: isMobile ? 100 : 140,
+                                            width: isMobile ? 150 : 140,
+                                            height: isMobile ? 150 : 140,
                                             borderRadius: 20,
                                             objectFit: "cover",
                                         }}
