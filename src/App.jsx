@@ -591,9 +591,8 @@ export default function Recorder() {
                                     borderRadius: 30,
                                     padding: 24,
                                     display: "flex",
-                                    alignItems: isMobile ? "flex-start" : "center",
+                                    alignItems: "center",
                                     justifyContent: "space-between",
-                                    flexDirection: isMobile ? "column" : "row",
                                     gap: 20,
                                     height: isMobile ? "auto" : 180,
                                     flexShrink: 0,
@@ -602,11 +601,11 @@ export default function Recorder() {
                                 <div
                                     style={{
                                         display: "flex",
-                                        flexDirection: isMobile ? "column" : "row",
+                                        flexDirection: "row",
                                         gap: 20,
                                         alignItems: "center",
-                                        justifyContent: isMobile ? "center" : "space-between",
-                                        textAlign: isMobile ? "center" : "left",
+                                        justifyContent: "flex-start",
+                                        width: "100%",
                                         height: "100%",
                                         overflow: "hidden",
                                     }}
@@ -619,6 +618,7 @@ export default function Recorder() {
                                             height: isMobile ? 150 : 140,
                                             borderRadius: 20,
                                             objectFit: "cover",
+                                            flexShrink: 0,
                                         }}
                                     />
 
@@ -628,9 +628,9 @@ export default function Recorder() {
                                             minWidth: 0,
                                             display: "flex",
                                             flexDirection: "column",
-                                            alignItems: isMobile ? "center" : "flex-start",
+                                            alignItems: "flex-start",
                                             justifyContent: "center",
-                                            textAlign: isMobile ? "center" : "left",
+                                            textAlign: "left",
                                         }}
                                     >
                                         <div
@@ -649,7 +649,6 @@ export default function Recorder() {
                                                 margin: 0,
                                                 fontSize: isMobile ? 28 : 36,
                                                 fontWeight: 800,
-
                                                 overflow: "hidden",
                                                 textOverflow: "ellipsis",
                                                 whiteSpace: "nowrap",
@@ -679,25 +678,6 @@ export default function Recorder() {
                                         </p>
                                     </div>
                                 </div>
-
-                                {/*{song.spotify_url && (*/}
-                                {/*    <a*/}
-                                {/*        href={song.spotify_url}*/}
-                                {/*        target="_blank"*/}
-                                {/*        rel="noreferrer"*/}
-                                {/*        style={{*/}
-                                {/*            background: "#1DB954",*/}
-                                {/*            color: "white",*/}
-                                {/*            padding: "14px 22px",*/}
-                                {/*            borderRadius: 15,*/}
-                                {/*            textDecoration: "none",*/}
-                                {/*            fontWeight: 700,*/}
-                                {/*            whiteSpace: "nowrap",*/}
-                                {/*        }}*/}
-                                {/*    >*/}
-                                {/*        Play on Spotify*/}
-                                {/*    </a>*/}
-                                {/*)}*/}
                             </div>
                         </div>
                         {/* LYRICS */}
