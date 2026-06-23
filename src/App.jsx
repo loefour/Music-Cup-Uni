@@ -19,6 +19,7 @@ export default function Recorder() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+
     // -----------------------------
     // START RECORDING (WS VERSION)
     // -----------------------------
