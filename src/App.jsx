@@ -188,15 +188,13 @@ export default function Recorder() {
               color: "white",
           }}
       >
-          <div
-              style={{
-                  padding: isMobile ? 20 : 40,
-                  width: "100%",
-                  maxWidth: "1400px",
-                  margin: "0 auto",
-                  boxSizing: "border-box",
-              }}
-          >
+        <div
+            style={{
+                padding: isMobile ? 20 : 40,
+                width: "100%",
+                maxWidth: "1400px",
+            }}
+        >
           <h1>🎵 Music Cup</h1>
 
             <div
@@ -345,7 +343,7 @@ export default function Recorder() {
                         maxWidth: "1400px",
                         marginTop: 40,
 
-                        minHeight: isMobile
+                        height: isMobile
                             ? "auto"
                             : "calc(100vh - 140px)",
                     }}
@@ -353,9 +351,7 @@ export default function Recorder() {
                     <div
                         style={{
                             display: "grid",
-                            gridTemplateColumns: isMobile
-                                ? "1fr"
-                                : "380px minmax(0,1fr)",
+                            gridTemplateColumns: isMobile ? "1fr" : "420px 1fr",
                             height: "100%",
 
                             gridTemplateAreas: isMobile
@@ -574,9 +570,6 @@ export default function Recorder() {
                                     gap: 20,
                                     height: 180,
                                     flexShrink: 0,
-
-                                    width: "100%",
-                                    overflow: "hidden",
                                 }}
                             >
                                 <div
@@ -604,7 +597,6 @@ export default function Recorder() {
                                         style={{
                                             flex: 1,
                                             minWidth: 0,
-                                            overflow: "hidden",
                                         }}
                                     >
                                         <div
@@ -621,12 +613,12 @@ export default function Recorder() {
                                         <h1
                                             style={{
                                                 margin: 0,
-                                                fontSize: isMobile ? 24 : 32,
+                                                fontSize: isMobile ? 28 : 36,
                                                 fontWeight: 800,
+
                                                 overflow: "hidden",
                                                 textOverflow: "ellipsis",
                                                 whiteSpace: "nowrap",
-                                                width: "100%",
                                             }}
                                         >
                                             {song.title}
@@ -721,12 +713,10 @@ export default function Recorder() {
                             <div
                                 style={{
                                     whiteSpace: "pre-wrap",
-                                    wordBreak: "break-word",
-                                    overflowWrap: "break-word",
                                     lineHeight: 2,
                                     color: "#f3f4f6",
                                     fontSize: isMobile ? 15 : 18,
-                                    maxWidth: "100%",
+                                    maxWidth: "95%",
                                 }}
                             >
                                 {song.lyrics || "Lyrics not available"}
