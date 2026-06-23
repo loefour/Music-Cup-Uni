@@ -211,31 +211,74 @@ export default function Recorder() {
                         border: "none",
                         cursor: "pointer",
                         position: "relative",
-                        overflow: "hidden",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        overflow: "visible",
+
+                        background: recording
+                            ? "linear-gradient(135deg,#ef4444,#dc2626)"
+                            : "#050816",
+
                         transform: recording
                             ? "scale(1.08)"
                             : clicked
-                                ? "scale(0.92)"
+                                ? "scale(0.94)"
                                 : "scale(1)",
-                        background: recording
-                            ? "linear-gradient(135deg,#ef4444,#dc2626)"
-                            : "linear-gradient(135deg,#2563eb,#06b6d4)",
-
-                        animation: recording
-                            ? "recordingPulse 1.2s infinite"
-                            : "pulse 2s infinite",
-
-                        boxShadow: recording
-                            ? "0 0 25px rgba(239,68,68,.8), 0 0 80px rgba(239,68,68,.4), inset 0 0 20px rgba(255,255,255,.1)"
-                            : "0 0 25px rgba(37,99,235,.7), 0 0 80px rgba(6,182,212,.4), inset 0 0 20px rgba(255,255,255,.1)",
 
                         transition: "all .3s ease",
+
+                        boxShadow: recording
+                            ? "0 0 25px rgba(239,68,68,.8), 0 0 80px rgba(239,68,68,.4)"
+                            : `
+                                0 0 15px rgba(59,130,246,.5),
+                                0 0 40px rgba(59,130,246,.25),
+                                inset 0 0 30px rgba(255,255,255,.03)
+                              `,
                     }}
                 >
+                    {!recording && (
+                        <>
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    inset: -8,
+                                    borderRadius: "50%",
+                                    border: "3px solid rgba(96,165,250,.9)",
+                                    boxShadow: `
+                        0 0 15px rgba(96,165,250,.8),
+                        0 0 35px rgba(96,165,250,.5)
+                    `,
+                                }}
+                            />
+
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    inset: -18,
+                                    borderRadius: "50%",
+                                    border: "1px solid rgba(96,165,250,.15)",
+                                }}
+                            />
+
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    inset: -30,
+                                    borderRadius: "50%",
+                                    border: "1px solid rgba(96,165,250,.08)",
+                                }}
+                            />
+                        </>
+                    )}
+
                     {!recording ? (
                         <div
                             style={{
-                                fontSize: isMobile ? 40 : 60,
+                                fontSize: isMobile ? 42 : 58,
+                                color: "#60a5fa",
+                                textShadow:
+                                    "0 0 10px rgba(96,165,250,.8), 0 0 25px rgba(96,165,250,.6)",
                             }}
                         >
                             🎤
@@ -255,6 +298,7 @@ export default function Recorder() {
                                     key={i}
                                     style={{
                                         width: 8,
+                                        height: 20,
                                         background: "white",
                                         borderRadius: 999,
                                         animation: `bars ${0.6 + i * 0.15}s infinite`,
@@ -264,21 +308,20 @@ export default function Recorder() {
                         </div>
                     )}
                 </button>
+                {!recording && !loading && (
+                    <div
+                        style={{
+                            marginTop: 30,
+                            textAlign: "center",
+                            color: "#9ca3af",
+                            fontSize: 15,
+                            letterSpacing: 1,
+                        }}
+                    >
+                        Tap to identify music
+                    </div>
+                )}
             </div>
-          <div style={{ marginTop: 20 }}>
-            {recording && (
-                <p style={{ color: "#f87171" }}>
-                  🔴 Listening...
-                </p>
-            )}
-
-            {loading && (
-                <p>
-                  ⏳ Identifying song...
-                </p>
-            )}
-          </div>
-
             {song?.success && (
                 <div
                     style={{
