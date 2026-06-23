@@ -222,30 +222,29 @@
 
 /*Button Animation*/
 
-
 @keyframes heartbeat {
   0% {
-    transform: scale(1);
+    height: 14px;
   }
 
-  14% {
-    transform: scale(1.12);
+  20% {
+    height: 38px;
   }
 
-  28% {
-    transform: scale(1);
+  40% {
+    height: 20px;
   }
 
-  42% {
-    transform: scale(1.12);
+  60% {
+    height: 48px;
   }
 
-  70% {
-    transform: scale(1);
+  80% {
+    height: 26px;
   }
 
   100% {
-    transform: scale(1);
+    height: 14px;
   }
 }
 

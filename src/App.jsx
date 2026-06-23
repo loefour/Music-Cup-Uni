@@ -313,9 +313,9 @@ export default function Recorder() {
                                         height: 20,
                                         background: "white",
                                         borderRadius: 999,
-                                        animation: recording
-                                            ? "heartbeat 1.4s infinite"
-                                            : "none"
+                                        animation: "heartbeat 0.9s infinite ease-in-out",
+                                        animationDelay: `${i * 0.15}s`,
+                                        transformOrigin: "bottom",
                                     }}
                                 />
                             ))}
