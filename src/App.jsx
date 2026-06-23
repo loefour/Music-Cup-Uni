@@ -448,33 +448,6 @@ export default function Recorder() {
                                     >
                                         {song.artist}
                                     </h1>
-
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: 8,
-                                            marginTop: 10,
-                                            color: "#e5e7eb",
-                                        }}
-                                    >
-                                        <span
-                                            style={{
-                                                width: 18,
-                                                height: 18,
-                                                borderRadius: "50%",
-                                                background: "#ef4444",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                fontSize: 12,
-                                            }}
-                                        >
-                                            ✓
-                                        </span>
-
-                                        <span>Verified Artist</span>
-                                    </div>
                                     <p
                                         style={{
                                             marginTop: 10,
