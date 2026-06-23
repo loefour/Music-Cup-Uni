@@ -11,6 +11,9 @@ export default function Recorder() {
     const wsRef = useRef(null);
     const streamRef = useRef(null);
 
+    const timeoutRef = useRef(null);
+    const recordingRef = useRef(false);
+
 
     // Mobile Respincive
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -20,6 +23,72 @@ export default function Recorder() {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    // -----------------------------
+    // START WS CONNECTION
+    // -----------------------------
+
+    const connectWebSocket = () => {
+        const ws = new WebSocket(
+            "wss://music-cup-backend.onrender.com/ws/recognize"
+        );
+
+        wsRef.current = ws;
+
+        ws.onopen = () => {
+            console.log("WebSocket connected");
+        };
+
+        ws.onmessage = (event) => {
+            const msg = JSON.parse(event.data);
+
+            if (msg.type === "SEARCHING") {
+                setLoading(true);
+            }
+
+            if (msg.type === "NOT_FOUND") {
+                console.log("Song not found, reconnecting...");
+
+                if (recordingRef.current) {
+                    ws.close();
+
+                    setTimeout(() => {
+                        if (recordingRef.current) {
+                            connectWebSocket();
+                        }
+                    }, 500);
+                }
+            }
+
+            if (msg.type === "FOUND") {
+                clearTimeout(timeoutRef.current);
+
+                setSong({
+                    success: true,
+                    title: msg.data.title,
+                    artist: msg.data.artist,
+                    album: msg.data.album,
+                    cover: msg.data.cover,
+                    artist_image: msg.data.artist_image,
+                    lyrics: msg.data.lyrics,
+                    spotify_url:
+                        msg.data?.spotify?.external_urls?.spotify ||
+                        msg.data.spotify_url,
+                });
+
+                stopRecording();
+            }
+        };
+
+        ws.onerror = (err) => {
+            console.error("WebSocket error:", err);
+        };
+
+        ws.onclose = () => {
+            console.log("WebSocket closed");
+        };
+    };
+
 
 
     // -----------------------------
@@ -44,90 +113,34 @@ export default function Recorder() {
         // -----------------------------
         // CONNECT WEBSOCKET
         // -----------------------------
-        const ws = new WebSocket("wss://music-cup-backend.onrender.com/ws/recognize");
-        wsRef.current = ws;
-
-        ws.onopen = () => {
-            console.log("WebSocket connected");
-        };
-
-        ws.onmessage = (event) => {
-            const msg = JSON.parse(event.data);
-
-            if (msg.type === "SEARCHING") {
-                setLoading(true);
-            }
-
-
-            if (msg.type === "NOT_FOUND") {
-                setLoading(false);
-                stopRecording();
-                alert("Song not found");
-            }
-
-            if (msg.type === "FOUND") {
-                setSong({
-                    success: true,
-                    title: msg.data.title,
-                    artist: msg.data.artist,
-                    album: msg.data.album,
-                    cover: msg.data.cover,
-                    artist_image: msg.data.artist_image,
-                    lyrics: msg.data.lyrics,
-                    spotify_url:
-                        msg.data?.spotify?.external_urls?.spotify ||
-                        msg.data.spotify_url,
-                });
-
-                stopRecording();
-            }
-        };
-
-        // ws.onmessage = (event) => {
-        //     const msg = JSON.parse(event.data);
-        //
-        //     if (msg.type === "SEARCHING") {
-        //         setLoading(true);
-        //     }
-        //
-        //     if (msg.type === "FOUND") {
-        //         setSong({
-        //             success: true,
-        //             title: msg.data.title,
-        //             artist: msg.data.artist,
-        //             album: msg.data.album,
-        //             cover: msg.data.cover,
-        //             artist_image: msg.data.artist_image,
-        //             lyrics: msg.data.lyrics,
-        //             spotify_url:
-        //                 msg.data?.spotify?.external_urls?.spotify ||
-        //                 msg.data.spotify_url,
-        //         });
-        //         stopRecording();
-        //     }
-        // };
-
-        ws.onerror = (err) => {
-            console.error("WebSocket error:", err);
-        };
-
-        ws.onclose = () => {
-            console.log("WebSocket closed");
-        };
+        connectWebSocket();
 
         // -----------------------------
         // SEND AUDIO CHUNKS
         // -----------------------------
         recorder.ondataavailable = (e) => {
-            if (e.data.size > 0 && ws.readyState === 1) {
-                ws.send(e.data);
+            if (
+                e.data.size > 0 &&
+                wsRef.current &&
+                wsRef.current.readyState === WebSocket.OPEN
+            ) {
+                wsRef.current.send(e.data);
             }
         };
-
         // send chunk every 0.5s second
         recorder.start(3000);
 
         setRecording(true);
+
+        recordingRef.current = true;
+
+        timeoutRef.current = setTimeout(() => {
+            console.log("25 seconds passed");
+
+            stopRecording();
+
+            alert("Song not found");
+        }, 25000);
 
         // ADD TimeOut
         setTimeout(() => {
@@ -142,10 +155,19 @@ export default function Recorder() {
     // STOP RECORDING
     // -----------------------------
     const stopRecording = () => {
+        recordingRef.current = false;
+
+        clearTimeout(timeoutRef.current);
+
         setRecording(false);
         setLoading(false);
 
-        mediaRecorderRef.current?.stop();
+        if (
+            mediaRecorderRef.current &&
+            mediaRecorderRef.current.state !== "inactive"
+        ) {
+            mediaRecorderRef.current.stop();
+        }
 
         streamRef.current?.getTracks().forEach((t) => t.stop());
 
