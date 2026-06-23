@@ -597,7 +597,7 @@ export default function Recorder() {
                                     gap: 20,
                                     height: isMobile ? "auto" : 180,
                                     flexShrink: 0,
-                                    width: "100%",
+                                    width: "90%",
                                 }}
                             >
                                 <div
