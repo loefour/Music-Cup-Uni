@@ -199,7 +199,8 @@ export default function Recorder() {
                 style={{
                     marginTop: 30,
                     display: "flex",
-                    justifyContent: "center",
+                    flexDirection: "column",
+                    alignItems: "center",
                 }}
             >
                 <button
@@ -242,13 +243,22 @@ export default function Recorder() {
                             <div
                                 style={{
                                     position: "absolute",
+                                    inset: -15,
+                                    borderRadius: "50%",
+                                    border: "2px solid rgba(239,68,68,.5)",
+                                    animation: "pulseRing 1.5s infinite",
+                                }}
+                            />
+                            <div
+                                style={{
+                                    position: "absolute",
                                     inset: -8,
                                     borderRadius: "50%",
                                     border: "3px solid rgba(96,165,250,.9)",
                                     boxShadow: `
-                        0 0 15px rgba(96,165,250,.8),
-                        0 0 35px rgba(96,165,250,.5)
-                    `,
+                                                0 0 15px rgba(96,165,250,.8),
+                                                0 0 35px rgba(96,165,250,.5)
+                                            `,
                                 }}
                             />
 
@@ -301,7 +311,9 @@ export default function Recorder() {
                                         height: 20,
                                         background: "white",
                                         borderRadius: 999,
-                                        animation: `bars ${0.6 + i * 0.15}s infinite`,
+                                        animation: recording
+                                            ? "heartbeat 1.4s infinite"
+                                            : "none"
                                     }}
                                 />
                             ))}
