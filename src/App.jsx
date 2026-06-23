@@ -622,6 +622,8 @@ export default function Recorder() {
                                         <h1
                                             style={{
                                                 margin: 0,
+                                                paddingBottom: 5,
+                                                paddingRight: 5,
                                                 fontSize: isMobile ? 28 : 36,
                                                 fontWeight: 800,
                                                 overflow: "hidden",
