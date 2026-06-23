@@ -535,7 +535,12 @@ export default function Recorder() {
                                         }}
                                     />
 
-                                    <div>
+                                    <div
+                                        style={{
+                                            flex: 1,
+                                            minWidth: 0,
+                                        }}
+                                    >
                                         <div
                                             style={{
                                                 color: "#9ca3af",
@@ -550,8 +555,12 @@ export default function Recorder() {
                                         <h1
                                             style={{
                                                 margin: 0,
-                                                fontSize: isMobile ? 28 : 42,
+                                                fontSize: isMobile ? 28 : 36,
                                                 fontWeight: 800,
+
+                                                overflow: "hidden",
+                                                textOverflow: "ellipsis",
+                                                whiteSpace: "nowrap",
                                             }}
                                         >
                                             {song.title}
