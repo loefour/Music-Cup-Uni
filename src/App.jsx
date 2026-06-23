@@ -556,6 +556,7 @@ export default function Recorder() {
                                 display: "flex",
                                 flexDirection: "column",
                                 gap: 20,
+                                alignItems: isMobile ? "center" : "stretch",
                             }}
                         >
                             {/* BIG SONG COVER */}
@@ -601,6 +602,11 @@ export default function Recorder() {
                                         style={{
                                             flex: 1,
                                             minWidth: 0,
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: isMobile ? "center" : "flex-start",
+                                            justifyContent: "center",
+                                            textAlign: isMobile ? "center" : "left",
                                         }}
                                     >
                                         <div
