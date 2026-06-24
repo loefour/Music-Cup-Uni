@@ -152,7 +152,6 @@ export default function Recorder() {
         }, 15000);
     };
 
-
     // -----------------------------
     // STOP RECORDING
     // -----------------------------
@@ -191,64 +190,40 @@ export default function Recorder() {
     };
 
 
-    return (
+
+  return (
+      <div
+          style={{
+              minHeight: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+
+              backgroundImage:
+                  !isMobile && song?.artist_image
+                      ? `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url(${song.artist_image})`
+                      : "none",
+
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundAttachment: "fixed",
+              backgroundColor: "#000",
+
+              color: "white",
+          }}
+      >
         <div
             style={{
-                minHeight: "100vh",
+                padding: isMobile ? 20 : 40,
                 width: "100%",
-                margin: 0,
-                padding: 0,
-                position: "relative",
-
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-
-                backgroundImage:
-                    !isMobile && song?.artist_image
-                        ? `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url(${song.artist_image})`
-                        : "none",
-
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundAttachment: "fixed",
-                backgroundColor: "#000",
-
-                color: "white",
+                maxWidth: "1400px",
             }}
         >
-            <div
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    marginBottom: 20,
-                }}
-            >
-                <h1
-                    style={{
-                        position: "absolute",
-                        top: "25%",          // controls vertical overlap with button
-                        left: "50%",         // 👈 slightly to the right
-                        transform: "translate(-50%, -50%)",
-                        margin: 0,
-                        fontSize: isMobile ? 32 : 52,
-                        fontWeight: 800,
-                        letterSpacing: 2,
-                        zIndex: 10,
-                        pointerEvents: "none", // so it doesn't block button clicks
-                        textShadow: "0 10px 30px rgba(0,0,0,.6)",
-                    }}
-                >
-                    Music Cup
-                </h1>
-            <p>
-
-            </p>
+          <h1>🎵 Music Cup</h1>
 
             <div
                 style={{
-                    marginTop: 50,
+                    marginTop: 30,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -710,7 +685,7 @@ export default function Recorder() {
                                     color: "rgba(255,255,255,.65)",
                                     letterSpacing: 3,
                                     fontSize: 12,
-                                    marginBottom: 30,
+                                    marginBottom: 10,
                                 }}
                             >
                                 MUSIC CUP
