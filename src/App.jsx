@@ -219,11 +219,20 @@ export default function Recorder() {
                 maxWidth: "1400px",
             }}
         >
-          <h1>🎵 Music Cup</h1>
+          <h1
+              style={{
+                  background: "linear-gradient(to right, #405c92, #37aebd)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  margin: 0,
+              }}
+          >
+              Music Cup
+          </h1>
 
             <div
                 style={{
-                    marginTop: 30,
+                    marginTop: 50,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -682,15 +691,10 @@ export default function Recorder() {
                         >
                             <div
                                 style={{
-                                    background: "linear-gradient(to right, #405c92, #37aebd)",
-                                    WebkitBackgroundClip: "text",
-                                    backgroundClip: "text",
-                                    WebkitTextFillColor: "transparent",
+                                    color: "rgba(255,255,255,.65)",
                                     letterSpacing: 3,
                                     fontSize: 12,
                                     marginBottom: 30,
-                                    fontWeight: 600,
-                                    display: "inline-block",
                                 }}
                             >
                                 MUSIC CUP
