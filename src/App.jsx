@@ -224,7 +224,7 @@ export default function Recorder() {
                   background: "linear-gradient(to right, #405c92, #37aebd)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  margin: 0,
+                  margin: 30,
               }}
           >
               Music Cup
