@@ -228,8 +228,8 @@ export default function Recorder() {
                 <h1
                     style={{
                         position: "absolute",
-                        top: "35%",          // controls vertical overlap with button
-                        left: "55%",         // 👈 slightly to the right
+                        top: "25%",          // controls vertical overlap with button
+                        left: "50%",         // 👈 slightly to the right
                         transform: "translate(-50%, -50%)",
                         margin: 0,
                         fontSize: isMobile ? 32 : 52,
