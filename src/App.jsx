@@ -194,7 +194,7 @@ export default function Recorder() {
         <div
             style={{
                 minHeight: "100vh",
-                width: "100vw",
+                width: "100%",
                 margin: 0,
                 padding: 0,
 
