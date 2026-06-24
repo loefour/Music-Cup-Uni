@@ -376,6 +376,7 @@ export default function Recorder() {
                             style={{
                                 display: "grid",
                                 gridTemplateColumns: isMobile ? "1fr" : "420px 1fr",
+                                gridTemplateRows: isMobile ? "auto" : "220px",
                                 height: isMobile ? "auto" : "100%",
                                 gridTemplateAreas: isMobile
                                     ? `
