@@ -219,12 +219,20 @@ export default function Recorder() {
             <div
                 style={{
                     width: "100%",
-                    maxWidth: "1800px",
-                    margin: "0 auto",
-                    padding: 20,
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: 20,
                 }}
             >
-          <h1>
+          <h1
+              style={{
+                  margin: 0,
+                  textAlign: "center",
+                  fontSize: isMobile ? 32 : 48,
+                  fontWeight: 800,
+                  letterSpacing: 2,
+              }}
+          >
               Music Cup
           </h1>
             <p>
