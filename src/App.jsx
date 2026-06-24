@@ -218,6 +218,8 @@ export default function Recorder() {
             <div
                 style={{
                     width: "100%",
+                    maxWidth: "1800px",
+                    margin: "0 auto",
                     padding: 20,
                 }}
             >
