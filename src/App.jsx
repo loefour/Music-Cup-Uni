@@ -191,37 +191,43 @@ export default function Recorder() {
 
 
 
-  return (
-      <div
-          style={{
-              minHeight: "100vh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-
-              backgroundImage:
-                  !isMobile && song?.artist_image
-                      ? `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url(${song.artist_image})`
-                      : "none",
-
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundAttachment: "fixed",
-              backgroundColor: "#000",
-
-              color: "white",
-          }}
-      >
+    return (
         <div
             style={{
-                padding: isMobile ? 20 : 40,
-                width: "100%",
-                maxWidth: "1400px",
+                minHeight: "100vh",
+                width: "100vw",
+                margin: 0,
+                padding: 0,
+
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+
+                backgroundImage:
+                    !isMobile && song?.artist_image
+                        ? `linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url(${song.artist_image})`
+                        : "none",
+
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed",
+                backgroundColor: "#000",
+
+                color: "white",
             }}
         >
+            <div
+                style={{
+                    width: "100%",
+                    padding: 20,
+                }}
+            >
           <h1>
               Music Cup
           </h1>
+            <p>
+
+            </p>
 
             <div
                 style={{
