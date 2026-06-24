@@ -198,6 +198,7 @@ export default function Recorder() {
                 width: "100%",
                 margin: 0,
                 padding: 0,
+                position: "relative",
 
                 display: "flex",
                 justifyContent: "center",
@@ -224,17 +225,23 @@ export default function Recorder() {
                     marginBottom: 20,
                 }}
             >
-          <h1
-              style={{
-                  margin: 0,
-                  textAlign: "center",
-                  fontSize: isMobile ? 32 : 48,
-                  fontWeight: 800,
-                  letterSpacing: 2,
-              }}
-          >
-              Music Cup
-          </h1>
+                <h1
+                    style={{
+                        position: "absolute",
+                        top: "35%",          // controls vertical overlap with button
+                        left: "55%",         // 👈 slightly to the right
+                        transform: "translate(-50%, -50%)",
+                        margin: 0,
+                        fontSize: isMobile ? 32 : 52,
+                        fontWeight: 800,
+                        letterSpacing: 2,
+                        zIndex: 10,
+                        pointerEvents: "none", // so it doesn't block button clicks
+                        textShadow: "0 10px 30px rgba(0,0,0,.6)",
+                    }}
+                >
+                    Music Cup
+                </h1>
             <p>
 
             </p>
