@@ -682,10 +682,15 @@ export default function Recorder() {
                         >
                             <div
                                 style={{
-                                    color: "rgba(255,255,255,.65)",
+                                    background: "linear-gradient(to right, #405c92, #37aebd)",
+                                    WebkitBackgroundClip: "text",
+                                    backgroundClip: "text",
+                                    WebkitTextFillColor: "transparent",
                                     letterSpacing: 3,
                                     fontSize: 12,
-                                    marginBottom: 10,
+                                    marginBottom: 30,
+                                    fontWeight: 600,
+                                    display: "inline-block",
                                 }}
                             >
                                 MUSIC CUP
