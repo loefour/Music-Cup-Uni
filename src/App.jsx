@@ -219,14 +219,7 @@ export default function Recorder() {
                 maxWidth: "1400px",
             }}
         >
-          <h1
-              style={{
-                  background: "linear-gradient(to right, #405c92, #37aebd)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  margin: 30,
-              }}
-          >
+          <h1>
               Music Cup
           </h1>
 
