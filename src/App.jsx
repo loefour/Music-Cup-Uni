@@ -460,87 +460,34 @@ export default function Recorder() {
                                             {song.monthly_listeners || "Popular Artist"}
                                         </p>
 
-                                        <p
-                                            style={{
-                                                color: "#e5e7eb",
-                                                lineHeight: 1.8,
-                                                fontSize: 15,
-                                            }}
-                                        >
-                                            {song.artist_bio ||
-                                                "Artist information is currently unavailable."}
-                                        </p>
                                         <div
                                             style={{
-                                                marginTop: 30,
-                                                borderTop: "1px solid rgba(255,255,255,.15)",
-                                                paddingTop: 25,
-                                                display: isMobile ? "none" : "flex",
-                                                justifyContent: "space-between",
+                                                marginTop: 20,
+                                                flex: 1,
+                                                overflow: "hidden",
+                                                display: "flex",
+                                                flexDirection: "column",
                                             }}
                                         >
-                                            <div>
-                                                <div
-                                                    style={{
-                                                        color: "#ff4d4d",
-                                                        fontSize: 28,
-                                                        fontWeight: 700,
-                                                    }}
-                                                >
-                                                    78.2M
-                                                </div>
+                                            <p
+                                                style={{
+                                                    color: "#e5e7eb",
+                                                    lineHeight: 1.8,
+                                                    fontSize: isMobile ? 14 : 15,
+                                                    margin: 0,
 
-                                                <div
-                                                    style={{
-                                                        color: "#9ca3af",
-                                                        fontSize: 14,
-                                                    }}
-                                                >
-                                                    Monthly listeners
-                                                </div>
-                                            </div>
+                                                    overflow: "hidden",
 
-                                            <div>
-                                                <div
-                                                    style={{
-                                                        color: "#ff4d4d",
-                                                        fontSize: 28,
-                                                        fontWeight: 700,
-                                                    }}
-                                                >
-                                                    2010
-                                                </div>
+                                                    display: "-webkit-box",
+                                                    WebkitLineClamp: isMobile ? 8 : 14,
+                                                    WebkitBoxOrient: "vertical",
 
-                                                <div
-                                                    style={{
-                                                        color: "#9ca3af",
-                                                        fontSize: 14,
-                                                    }}
-                                                >
-                                                    Debut
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div
-                                                    style={{
-                                                        color: "#ff4d4d",
-                                                        fontSize: 28,
-                                                        fontWeight: 700,
-                                                    }}
-                                                >
-                                                    8
-                                                </div>
-
-                                                <div
-                                                    style={{
-                                                        color: "#9ca3af",
-                                                        fontSize: 14,
-                                                    }}
-                                                >
-                                                    Albums
-                                                </div>
-                                            </div>
+                                                    textOverflow: "ellipsis",
+                                                }}
+                                            >
+                                                {song.artist_bio ||
+                                                    "Artist information is currently unavailable."}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
