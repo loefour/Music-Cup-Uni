@@ -16,7 +16,7 @@ export default function Recorder() {
     const recordingRef = useRef(false);
 
 
-    // Mobile Respincive
+    // Mobile Responsive
     const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
 
     useEffect(() => {
@@ -25,9 +25,8 @@ export default function Recorder() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    // -----------------------------
-    // START WS CONNECTION
-    // -----------------------------
+
+    // Start Web Socket Connection
 
     const connectWebSocket = () => {
         const ws = new WebSocket(
@@ -72,6 +71,7 @@ export default function Recorder() {
                     cover: msg.data.cover,
                     artist_image: msg.data.artist_image,
                     lyrics: msg.data.lyrics,
+                    artist_bio: msg.data.artist_bio,
                     spotify_url:
                         msg.data?.spotify?.external_urls?.spotify ||
                         msg.data.spotify_url,
