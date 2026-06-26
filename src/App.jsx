@@ -91,9 +91,9 @@ export default function Recorder() {
     };
 
 
-    // -----------------------------
-    // START RECORDING (WS VERSION)
-    // -----------------------------
+
+    // Start Recording (Web Socket Version)
+
     const startRecording = async () => {
         setSong(null);
         setLoading(false);
@@ -110,14 +110,14 @@ export default function Recorder() {
 
         mediaRecorderRef.current = recorder;
 
-        // -----------------------------
-        // CONNECT WEBSOCKET
-        // -----------------------------
+
+        // Connect WebSocket
+
         connectWebSocket();
 
-        // -----------------------------
-        // SEND AUDIO CHUNKS
-        // -----------------------------
+
+        // Send Audio Chunk
+
         recorder.ondataavailable = (e) => {
             if (
                 e.data.size > 0 &&
@@ -127,7 +127,8 @@ export default function Recorder() {
                 wsRef.current.send(e.data);
             }
         };
-        // send chunk every 0.5s second
+
+        // send chunk every 3s second
         recorder.start(3000);
 
         setRecording(true);
@@ -151,9 +152,9 @@ export default function Recorder() {
         }, 15000);
     };
 
-    // -----------------------------
-    // STOP RECORDING
-    // -----------------------------
+
+    // Stop Recording
+
     const stopRecording = () => {
         recordingRef.current = false;
 
@@ -174,9 +175,9 @@ export default function Recorder() {
         wsRef.current?.close();
     };
 
-    // -----------------------------
-    // BUTTON CLICK
-    // -----------------------------
+
+    // Button Click
+
     const handleClick = () => {
         setClicked(true);
         setTimeout(() => setClicked(false), 300);
