@@ -637,7 +637,6 @@ export default function Recorder() {
 
                                     flex: 1,
                                     minHeight: 0,
-
                                     overflowY: "auto",
 
                                     boxShadow: "0 20px 50px rgba(0,0,0,.35)",
