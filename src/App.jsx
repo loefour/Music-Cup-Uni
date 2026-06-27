@@ -35,6 +35,8 @@ export default function Recorder() {
 
         wsRef.current = ws;
 
+
+        // When the Web Socket Connect
         ws.onopen = () => {
             console.log("WebSocket connected");
         };
@@ -49,9 +51,11 @@ export default function Recorder() {
             if (msg.type === "NOT_FOUND") {
                 console.log("Song not found, reconnecting...");
 
+                // if the recording continue
                 if (recordingRef.current) {
                     ws.close();
 
+                    // after 0.5s reconnect
                     setTimeout(() => {
                         if (recordingRef.current) {
                             connectWebSocket();
@@ -60,6 +64,8 @@ export default function Recorder() {
                 }
             }
 
+
+            // Song Found Showing Song Data
             if (msg.type === "FOUND") {
                 clearTimeout(timeoutRef.current);
 
@@ -81,10 +87,13 @@ export default function Recorder() {
             }
         };
 
+
+        // Web Socket Has Error While Searching for song
         ws.onerror = (err) => {
             console.error("WebSocket error:", err);
         };
 
+        // Web Socket DisConnect
         ws.onclose = () => {
             console.log("WebSocket closed");
         };
@@ -95,29 +104,35 @@ export default function Recorder() {
     // Start Recording (Web Socket Version)
 
     const startRecording = async () => {
+
+        // Remove the Previous Song
         setSong(null);
         setLoading(false);
 
+
+        // Access to the User Microfon Device
         const stream = await navigator.mediaDevices.getUserMedia({
             audio: true,
         });
 
+
+        // Saving the stream
         streamRef.current = stream;
 
         const recorder = new MediaRecorder(stream, {
             mimeType: "audio/webm",
         });
 
+
+        // Save the Record
         mediaRecorderRef.current = recorder;
 
 
         // Connect WebSocket
-
         connectWebSocket();
 
 
         // Send Audio Chunk
-
         recorder.ondataavailable = (e) => {
             if (
                 e.data.size > 0 &&
@@ -143,6 +158,7 @@ export default function Recorder() {
             alert("Song not found");
         }, 25000);
 
+
         // ADD TimeOut
         setTimeout(() => {
             if (!song && recording) {
@@ -154,7 +170,6 @@ export default function Recorder() {
 
 
     // Stop Recording
-
     const stopRecording = () => {
         recordingRef.current = false;
 
