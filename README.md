@@ -1,17 +1,85 @@
-# React + Vite
+# 🎵 Music Cup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> پروژه درس **هوش مصنوعی و سیستم‌های خبره**
 
-Currently, two official plugins are available:
+## 📖 معرفی پروژه
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Music Cup** یک سامانه تشخیص موسیقی است که با دریافت فایل یا صدای به صورت زنده، نام آهنگ و اطلاعات مربوط به آن را شناسایی می‌کند.
 
-## React Compiler
+این پروژه با معماری **Client-Server** توسعه داده شده و از دو بخش مستقل تشکیل شده است.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
+## 🛠️ زیرساخت فنی پروژه
 
-## Expanding the ESLint configuration
+### 🎨 Frontend
+- ⚛️ React
+- ⚡ Vite
+- 🌐 WebSocket
+- 🎤 MediaRecorder API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🚀 Backend
+- 🐍 Python
+- ⚡ FastAPI
+- 🔌 WebSocket
+- 🌍 REST API
+
+---
+
+## 🏗️ معماری پروژه
+
+```
+Frontend (React + Vite)
+        │
+        │ WebSocket
+        ▼
+Backend (FastAPI)
+        │
+        ▼
+Music Recognition API (Audd.io)
+```
+
+---
+
+## 🌍 Deployment
+
+| بخش | سرویس |
+|------|--------|
+| 🎨 Frontend | Netlify |
+| 🚀 Backend | Render |
+
+---
+
+## ✨ قابلیت‌ها
+
+- 🎵 تشخیص موسیقی از صدای ضبط‌شده
+- ⚡ ارتباط لحظه‌ای با WebSocket
+- 📡 ارسال داده به صورت Streaming
+- 🎙️ ضبط صدا از طریق مرورگر
+- 🔍 شناسایی نام آهنگ و خواننده
+- 🌐 معماری Frontend و Backend کاملاً مجزا
+- ☁️ قابل استقرار روی سرویس‌های ابری
+- 📝 نمایش متن (Lyrics) آهنگ در صورت موجود بودن
+---
+
+## 📂 ساختار پروژه
+
+```
+Music-Cup/
+│
+├── frontend/     # React + Vite
+└── backend/      # FastAPI
+```
+
+---
+## 👨‍💻 توسعه‌دهندگان
+
+اعضای گروه:
+
+- 👤 علی قبادی
+- 👤 سارا هادی‌زاده
+- 👤 فاطمه یزدانی
+- 👤 ارشک پیران اسدی
+- 👤 آرین آروین
+
+پروژه تهیه‌شده برای درس **هوش مصنوعی و سیستم‌های خبره**.
